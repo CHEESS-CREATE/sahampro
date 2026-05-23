@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Trading Landing Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #050816;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .topbar {
+      background: linear-gradient(90deg,#00ffae,#00c3ff);
+      color: black;
+      text-align: center;
+      padding: 12px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: #00ffae;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      color: #c7d2fe;
+    }
+
+    .btn {
+      background: linear-gradient(135deg,#00ffae,#00c3ff);
+      color: black;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 700;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 10px 18px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      margin-bottom: 24px;
+      color: #00ffae;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      max-width: 850px;
+      margin: auto;
+      color: #cbd5e1;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      margin-top: 40px;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .secondary-btn {
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 14px 22px;
+      border-radius: 14px;
+      color: white;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 24px;
+      margin-top: 70px;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    .stat-card h2 {
+      font-size: 48px;
+      color: #00ffae;
+      margin-bottom: 10px;
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 48px;
+      margin-bottom: 18px;
+    }
+
+    .section-title p {
+      color: #94a3b8;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.7;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 32px;
+      transition: 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: #00ffae;
+    }
+
+    .feature-card h3 {
+      margin: 18px 0 14px;
+      font-size: 24px;
+    }
+
+    .feature-card p {
+      color: #94a3b8;
+      line-height: 1.7;
+    }
+
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+      gap: 24px;
+    }
+
+    .price-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 30px;
+      padding: 40px;
+      position: relative;
+    }
+
+    .price-card.popular {
+      border: 2px solid #00ffae;
+      transform: scale(1.03);
+    }
+
+    .popular-tag {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: #00ffae;
+      color: black;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .price-card h3 {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .price {
+      font-size: 52px;
+      font-weight: 800;
+      margin: 20px 0;
+      color: #00ffae;
+    }
+
+    .price-card ul {
+      list-style: none;
+      margin: 24px 0;
+    }
+
+    .price-card li {
+      margin-bottom: 14px;
+      color: #cbd5e1;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+      gap: 24px;
+    }
+
+    .testimonial {
+      background: rgba(255,255,255,0.04);
+      padding: 30px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .testimonial p {
+      color: #cbd5e1;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      padding: 60px 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #94a3b8;
+    }
+
+    @media(max-width:768px){
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .section-title h2 {
+        font-size: 34px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    Promo Member Hari Ini — Diskon Hingga 80% 🔥
+  </div>
+
+  <div class="container">
+
+    <nav>
+      <div class="logo">AITradePro</div>
+
+      <div class="nav-links">
+        <a href="#fitur">Fitur</a>
+        <a href="#harga">Harga</a>
+        <a href="#testimoni">Testimoni</a>
+      </div>
+
+      <a href="#harga" class="btn">Gabung Sekarang</a>
+    </nav>
+
+    <section class="hero">
+      <div class="badge">
+        AI Engine Aktif 24/7 • Data Real-Time
+      </div>
+
+      <h1>
+        Stop Tebak Saham.<br>
+        Mulai Trading Dengan Data.
+      </h1>
+
+      <p>
+        Platform AI trading modern yang membantu Anda memantau market,
+        mendeteksi smart money, dan menemukan peluang saham lebih cepat.
+        Semua dirancang dengan tampilan premium seperti terminal profesional.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#harga" class="btn">Mulai Sekarang</a>
+        <a href="#fitur" class="secondary-btn">Lihat Fitur</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <h2>959</h2>
+          <p>Saham Dipantau AI</p>
+        </div>
+
+        <div class="stat-card">
+          <h2>24/7</h2>
+          <p>Realtime Monitoring</p>
+        </div>
+
+        <div class="stat-card">
+          <h2>90+</h2>
+          <p>Broker Intelligence</p>
+        </div>
+
+        <div class="stat-card">
+          <h2>07:00</h2>
+          <p>Morning Alert Otomatis</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="fitur">
+      <div class="section-title">
+        <h2>Fitur Premium AI Trading</h2>
+        <p>
+          Semua tools penting untuk trader modern tersedia dalam satu dashboard.
+        </p>
+      </div>
+
+      <div class="features">
+
+        <div class="feature-card">
+          <h3>📊 Smart Money Tracker</h3>
+          <p>
+            Pantau aliran dana institusi dan broker besar secara realtime.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🤖 AI Stock Scanner</h3>
+          <p>
+            AI otomatis scan ratusan saham setiap hari dan memberi ranking.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🚨 Realtime Alert</h3>
+          <p>
+            Dapatkan notifikasi breakout, volume spike, dan momentum market.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3>📰 News Sentiment AI</h3>
+          <p>
+            AI membaca berita pasar dan mengubahnya menjadi insight sederhana.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3>📈 Portfolio Tracker</h3>
+          <p>
+            Monitor profit dan performa saham Anda secara otomatis.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3>💬 Telegram Integration</h3>
+          <p>
+            Semua alert dan signal dikirim langsung ke Telegram Anda.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="section" id="harga">
+      <div class="section-title">
+        <h2>Pilih Paket Terbaik</h2>
+        <p>
+          Cocok untuk pemula hingga trader aktif.
+        </p>
+      </div>
+
+      <div class="pricing">
+
+        <div class="price-card">
+          <h3>Starter</h3>
+          <div class="price">Rp199K</div>
+
+          <ul>
+            <li>✔ AI Signal Harian</li>
+            <li>✔ Telegram Alert</li>
+            <li>✔ Watchlist</li>
+            <li>✔ Market Scanner</li>
+          </ul>
+
+          <a href="#" class="btn">Pilih Paket</a>
+        </div>
+
+
+        <div class="price-card popular">
+          <div class="popular-tag">PALING POPULER</div>
+
+          <h3>Pro</h3>
+          <div class="price">Rp349K</div>
+
+          <ul>
+            <li>✔ Semua fitur Starter</li>
+            <li>✔ AI Stock Analyst</li>
+            <li>✔ Smart Money Matrix</li>
+            <li>✔ Priority Support</li>
+          </ul>
+
+          <a href="#" class="btn">Pilih Paket</a>
+        </div>
+
+
+        <div class="price-card">
+          <h3>Premium</h3>
+          <div class="price">Rp499K</div>
+
+          <ul>
+            <li>✔ Semua fitur lengkap</li>
+            <li>✔ Realtime AI Alert</li>
+            <li>✔ Premium Dashboard</li>
+            <li>✔ Unlimited Access</li>
+          </ul>
+
+          <a href="#" class="btn">Pilih Paket</a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="section" id="testimoni">
+      <div class="section-title">
+        <h2>Testimoni Pengguna</h2>
+        <p>
+          Banyak trader mulai lebih percaya diri setelah memakai sistem AI.
+        </p>
+      </div>
+
+      <div class="testimonial-grid">
+
+        <div class="testimonial">
+          <p>
+            “Tampilannya premium banget dan signal AI nya mudah dipahami.”
+          </p>
+
+          <strong>Andi • Surabaya</strong>
+        </div>
+
+        <div class="testimonial">
+          <p>
+            “Saya gak perlu mantengin chart seharian lagi.”
+          </p>
+
+          <strong>Budi • Jakarta</strong>
+        </div>
+
+        <div class="testimonial">
+          <p>
+            “Dashboard nya terasa seperti tools institusi profesional.”
+          </p>
+
+          <strong>Rizky • Bandung</strong>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+
+  <footer>
+    © 2026 AITradePro — All Rights Reserved.
+  </footer>
+
+</body>
+</html>
