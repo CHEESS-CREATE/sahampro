@@ -414,7 +414,7 @@
   <div class="section-title">
     <h2>Pilih Paket Membership</h2>
     <p>
-      Sesuaikan dengan kebutuhan trading Anda.
+      Pilih paket terbaik lalu lakukan pembayaran QRIS.
     </p>
   </div>
 
@@ -437,13 +437,9 @@
         <li>❌ VIP Group</li>
       </ul>
 
-      <a 
-        href="https://wa.me/6287832727925?text=Halo%20saya%20ingin%20bergabung%20paket%20Starter"
-        target="_blank"
-        class="btn"
-      >
+      <button class="btn" onclick="selectPackage('Starter - Rp199K')">
         Pilih Paket
-      </a>
+      </button>
 
     </div>
 
@@ -469,13 +465,9 @@
         <li>❌ VIP Mentoring</li>
       </ul>
 
-      <a 
-        href="https://wa.me/6287832727925?text=Halo%20saya%20ingin%20bergabung%20paket%20Pro"
-        target="_blank"
-        class="btn"
-      >
+      <button class="btn" onclick="selectPackage('Pro - Rp349K')">
         Pilih Paket
-      </a>
+      </button>
 
     </div>
 
@@ -497,19 +489,188 @@
         <li>✔ Mentoring Eksklusif</li>
       </ul>
 
-      <a 
-        href="https://wa.me/6287832727925?text=Halo%20saya%20ingin%20bergabung%20paket%20Premium"
-        target="_blank"
-        class="btn"
-      >
+      <button class="btn" onclick="selectPackage('Premium - Rp499K')">
         Pilih Paket
-      </a>
+      </button>
 
     </div>
 
   </div>
 
-    </section>
+
+  <!-- PAYMENT SECTION -->
+  <div id="paymentBox" style="display:none; margin-top:60px;">
+
+    <div class="section-title">
+      <h2>Pembayaran QRIS</h2>
+      <p>
+        Scan QRIS lalu isi formulir pembayaran.
+      </p>
+    </div>
+
+    <div style="
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+      align-items:start;
+    ">
+
+      <!-- QRIS -->
+      <div class="price-card">
+
+        <h3 style="margin-bottom:20px;">
+          Scan QRIS
+        </h3>
+
+        <img 
+          src="1001032242.jpg"
+          alt="QRIS"
+          style="
+            width:100%;
+            border-radius:20px;
+            background:white;
+          "
+        >
+
+        <p style="
+          margin-top:20px;
+          color:#94a3b8;
+          line-height:1.8;
+          text-align:center;
+        ">
+          Setelah pembayaran berhasil,
+          kirim data pembayaran Anda ke email:
+          <br><br>
+
+          <span style="
+            color:#00ffae;
+            font-weight:700;
+            font-size:18px;
+          ">
+            lyvinnesia@gmail.com
+          </span>
+        </p>
+
+      </div>
+
+
+      <!-- FORM -->
+      <div class="price-card">
+
+        <h3 style="margin-bottom:20px;">
+          Formulir Pembayaran
+        </h3>
+
+        <form>
+
+          <input 
+            type="text"
+            placeholder="Nama Lengkap"
+            style="
+              width:100%;
+              padding:16px;
+              margin-bottom:16px;
+              border:none;
+              border-radius:14px;
+              background:#111827;
+              color:white;
+            "
+          >
+
+          <input 
+            type="email"
+            placeholder="Alamat Email"
+            style="
+              width:100%;
+              padding:16px;
+              margin-bottom:16px;
+              border:none;
+              border-radius:14px;
+              background:#111827;
+              color:white;
+            "
+          >
+
+          <input 
+            type="text"
+            placeholder="Nomor WhatsApp"
+            style="
+              width:100%;
+              padding:16px;
+              margin-bottom:16px;
+              border:none;
+              border-radius:14px;
+              background:#111827;
+              color:white;
+            "
+          >
+
+          <input 
+            type="text"
+            id="selectedPackage"
+            placeholder="Paket Dipilih"
+            readonly
+            style="
+              width:100%;
+              padding:16px;
+              margin-bottom:16px;
+              border:none;
+              border-radius:14px;
+              background:#111827;
+              color:#00ffae;
+              font-weight:bold;
+            "
+          >
+
+          <textarea
+            placeholder="Catatan / Bukti Pembayaran"
+            style="
+              width:100%;
+              height:120px;
+              padding:16px;
+              margin-bottom:20px;
+              border:none;
+              border-radius:14px;
+              background:#111827;
+              color:white;
+            "
+          ></textarea>
+
+          <button 
+            type="submit"
+            class="btn"
+            style="width:100%;"
+          >
+            Kirim Formulir
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<script>
+
+function selectPackage(packageName){
+
+  document.getElementById('paymentBox').style.display = 'block';
+
+  document.getElementById('selectedPackage').value = packageName;
+
+  window.scrollTo({
+    top: document.getElementById('paymentBox').offsetTop - 50,
+    behavior: 'smooth'
+  });
+
+}
+
+</script>
 
 
     <section class="section" id="testimoni">
